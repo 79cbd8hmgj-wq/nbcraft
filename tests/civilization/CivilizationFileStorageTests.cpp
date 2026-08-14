@@ -1,6 +1,7 @@
 #include <assert.h>
 #include <stdio.h>
 
+#include "common/Utils.hpp"
 #include "world/civilization/CivilizationFileStorage.hpp"
 #include "world/civilization/CivilizationManager.hpp"
 
