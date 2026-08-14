@@ -15,6 +15,7 @@ public:
     CivilizationManager();
 
     int32_t foundSettlement(FactionId faction, const std::string& name, const TilePos& center);
+    void seedPrototypeRivals(const TilePos& playerSpawn);
 
     Settlement* getSettlement(int32_t id);
     const Settlement* getSettlement(int32_t id) const;
