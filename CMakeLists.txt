@@ -152,6 +152,11 @@ add_subdirectory(thirdparty/stb_image EXCLUDE_FROM_ALL)
 # Load Common Code
 add_subdirectory(source)
 
+target_sources(nbcraft-core PRIVATE
+    source/world/civilization/CivilizationTypes.cpp
+    source/world/civilization/Settlement.cpp
+)
+
 if(BUILD_TESTING)
     add_subdirectory(tests)
 endif()
