@@ -7,6 +7,8 @@
 #include "world/civilization/Settlement.hpp"
 #include "world/level/levelgen/chunk/ChunkPos.hpp"
 
+class CivilizationPersistence;
+
 class CivilizationManager
 {
 public:
@@ -28,6 +30,8 @@ public:
     const std::map<int32_t, Settlement>& getSettlements() const { return m_settlements; }
 
 private:
+    friend class CivilizationPersistence;
+
     int32_t m_nextSettlementId;
     std::map<int32_t, Settlement> m_settlements;
     std::map<ChunkPos, int32_t> m_claims;
