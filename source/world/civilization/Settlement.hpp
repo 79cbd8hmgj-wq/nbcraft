@@ -7,6 +7,8 @@
 #include "world/civilization/CivilizationTypes.hpp"
 #include "world/level/TilePos.hpp"
 
+class CivilizationPersistence;
+
 class Settlement
 {
 public:
@@ -32,6 +34,8 @@ public:
     DiplomaticStatus getDiplomaticStatus(int32_t otherSettlementId) const;
 
 private:
+    friend class CivilizationPersistence;
+
     static int clampRelation(int score);
     static int clampNonNegative(int value);
 
