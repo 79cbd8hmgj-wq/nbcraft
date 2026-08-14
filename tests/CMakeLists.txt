@@ -16,3 +16,11 @@ add_executable(nbcraft-civilization-manager-tests
 
 target_include_directories(nbcraft-civilization-manager-tests PRIVATE ../source)
 add_test(NAME nbcraft-civilization-manager-tests COMMAND nbcraft-civilization-manager-tests)
+
+add_executable(nbcraft-civilization-persistence-tests
+    civilization/CivilizationPersistenceTests.cpp
+)
+
+target_include_directories(nbcraft-civilization-persistence-tests PRIVATE ../source)
+target_link_libraries(nbcraft-civilization-persistence-tests PRIVATE nbcraft-core)
+add_test(NAME nbcraft-civilization-persistence-tests COMMAND nbcraft-civilization-persistence-tests)
