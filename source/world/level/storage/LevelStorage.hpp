@@ -11,6 +11,7 @@
 #include "ChunkStorage.hpp"
 #include "LevelData.hpp"
 
+class CivilizationManager;
 class Dimension;
 class Player;
 
@@ -28,6 +29,8 @@ public:
 	virtual void savePlayerData(LevelData& levelData, const std::vector<Player*>& players);
 	virtual bool load(Player& player) { return false; }
 	virtual bool save(Player& player) { return false; }
+	virtual bool loadCivilizations(CivilizationManager& manager) { return false; }
+	virtual bool saveCivilizations(const CivilizationManager& manager) { return false; }
 	virtual void saveGame(Level* level);
 	void loadEntities(Level* level) { loadEntities(level, nullptr); }
 	virtual void loadEntities(Level* level, LevelChunk* chunk);

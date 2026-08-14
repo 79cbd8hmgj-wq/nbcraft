@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.16.0)
 project(nbcraft)
 
+include(CTest)
+
 # Store Output In Top-Level Build Directory
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
@@ -149,6 +151,18 @@ add_subdirectory(thirdparty/stb_image EXCLUDE_FROM_ALL)
 
 # Load Common Code
 add_subdirectory(source)
+
+target_sources(nbcraft-core PRIVATE
+    source/world/civilization/CivilizationTypes.cpp
+    source/world/civilization/Settlement.cpp
+    source/world/civilization/CivilizationManager.cpp
+    source/world/civilization/CivilizationPersistence.cpp
+    source/world/civilization/CivilizationFileStorage.cpp
+)
+
+if(BUILD_TESTING)
+    add_subdirectory(tests)
+endif()
 
 # Load Platform-Specific Code
 add_subdirectory(platforms)
