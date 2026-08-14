@@ -12,6 +12,7 @@
 #include "LevelStorage.hpp"
 #include "ChunkStorage.hpp"
 #include "RegionFile.hpp"
+#include "world/civilization/CivilizationFileStorage.hpp"
 
 #ifndef DEMO
 
@@ -40,6 +41,8 @@ public:
 	void savePlayerData(LevelData& levelData, const std::vector<Player*>& players) override;
 	bool load(Player& player) override;
 	bool save(Player& player) override;
+	bool loadCivilizations(CivilizationManager& manager) override { return CivilizationFileStorage::load(m_levelDirPath, manager); }
+	bool saveCivilizations(const CivilizationManager& manager) override { return CivilizationFileStorage::save(m_levelDirPath, manager); }
 	void saveGame(Level* level) override;
 	void closeAll() override;
 	void tick() override;
