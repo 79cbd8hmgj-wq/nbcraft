@@ -7,7 +7,7 @@
 
 int main()
 {
-    const std::string directory = "build/civilization-file-storage-test";
+    const std::string directory = "civilization-file-storage-test";
     createFolderIfNotExists(directory.c_str());
 
     CivilizationManager source;
