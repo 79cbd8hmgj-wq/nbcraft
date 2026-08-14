@@ -24,3 +24,11 @@ add_executable(nbcraft-civilization-persistence-tests
 target_include_directories(nbcraft-civilization-persistence-tests PRIVATE ../source)
 target_link_libraries(nbcraft-civilization-persistence-tests PRIVATE nbcraft-core)
 add_test(NAME nbcraft-civilization-persistence-tests COMMAND nbcraft-civilization-persistence-tests)
+
+add_executable(nbcraft-civilization-file-storage-tests
+    civilization/CivilizationFileStorageTests.cpp
+)
+
+target_include_directories(nbcraft-civilization-file-storage-tests PRIVATE ../source)
+target_link_libraries(nbcraft-civilization-file-storage-tests PRIVATE nbcraft-core)
+add_test(NAME nbcraft-civilization-file-storage-tests COMMAND nbcraft-civilization-file-storage-tests)
