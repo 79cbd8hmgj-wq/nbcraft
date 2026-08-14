@@ -39,5 +39,37 @@ int main()
     assert(roma->resources().wood == 2);
     assert(roma->resources().stone == 1);
 
+    CivilizationManager rivals;
+    rivals.seedPrototypeRivals(TilePos(100, 64, 100));
+    rivals.seedPrototypeRivals(TilePos(100, 64, 100));
+
+    assert(rivals.getSettlements().size() == 2);
+
+    const Settlement* egypt = rivals.getSettlement(1);
+    const Settlement* persia = rivals.getSettlement(2);
+    assert(egypt != 0);
+    assert(persia != 0);
+    assert(egypt->getFaction() == FACTION_EGYPTIAN);
+    assert(persia->getFaction() == FACTION_PERSIAN);
+    assert(egypt->getCenter() == TilePos(484, 64, 100));
+    assert(persia->getCenter() == TilePos(-284, 64, 100));
+    assert(egypt->getPopulation() == 20);
+    assert(persia->getPopulation() == 20);
+    assert(egypt->resources().food == 100);
+    assert(egypt->resources().wood == 50);
+    assert(egypt->resources().stone == 50);
+    assert(egypt->resources().wealth == 25);
+
+    const int32_t rivalRomanId = rivals.foundSettlement(
+        FACTION_ROMAN,
+        "Roma",
+        TilePos(100, 64, 100)
+    );
+    assert(rivalRomanId == 3);
+    assert(rivals.getSettlement(1)->getRelation(rivalRomanId) == -30);
+    assert(rivals.getSettlement(2)->getRelation(rivalRomanId) == -30);
+    assert(rivals.getSettlement(rivalRomanId)->getRelation(1) == -30);
+    assert(rivals.getSettlement(rivalRomanId)->getRelation(2) == -30);
+
     return 0;
 }
