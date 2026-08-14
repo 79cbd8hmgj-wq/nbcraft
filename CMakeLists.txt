@@ -58,7 +58,7 @@ if(NBC_WIN32) # Windows
     )
 elseif(XENON) # Xbox 360 (libXenon)
     include_directories(${DEVKITXENON}/usr/include)
-    link_directories(${DEVKITXENON}/usr/lib ${XENON}/xenon/lib/32)
+    link_directories(${DEVKITXENON}/usr/lib ${DEVKITXENON}/xenon/lib/32)
     set(CMAKE_EXE_LINKER_FLAGS "-n -T ${XENON_LDSCRIPT}")
 
     # Binary to Object/Header
