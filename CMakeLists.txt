@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.16.0)
 project(nbcraft)
 
+include(CTest)
+
 # Store Output In Top-Level Build Directory
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
@@ -20,7 +22,7 @@ set(CMAKE_C_STANDARD 99)
 if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND
     CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 12)
     set(ENABLE_WCXX11_EXTENSIONS ON)
-elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     set(ENABLE_WCXX11_EXTENSIONS ON)
 endif()
 if (ENABLE_WCXX11_EXTENSIONS)
@@ -56,7 +58,7 @@ if(NBC_WIN32) # Windows
     )
 elseif(XENON) # Xbox 360 (libXenon)
     include_directories(${DEVKITXENON}/usr/include)
-    link_directories(${DEVKITXENON}/usr/lib ${DEVKITXENON}/xenon/lib/32)
+    link_directories(${DEVKITXENON}/usr/lib ${XENON}/xenon/lib/32)
     set(CMAKE_EXE_LINKER_FLAGS "-n -T ${XENON_LDSCRIPT}")
 
     # Binary to Object/Header
@@ -149,6 +151,10 @@ add_subdirectory(thirdparty/stb_image EXCLUDE_FROM_ALL)
 
 # Load Common Code
 add_subdirectory(source)
+
+if(BUILD_TESTING)
+    add_subdirectory(tests)
+endif()
 
 # Load Platform-Specific Code
 add_subdirectory(platforms)
