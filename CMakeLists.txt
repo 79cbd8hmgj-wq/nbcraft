@@ -157,6 +157,7 @@ target_sources(nbcraft-core PRIVATE
     source/world/civilization/Settlement.cpp
     source/world/civilization/CivilizationManager.cpp
     source/world/civilization/CivilizationPersistence.cpp
+    source/world/civilization/CivilizationFileStorage.cpp
 )
 
 if(BUILD_TESTING)
